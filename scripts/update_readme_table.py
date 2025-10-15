@@ -74,6 +74,8 @@ def generate_table(targets, versions):
         row = f"| **{component_name}** |"
         for col in columns:
             version = version_func(col["os"], col["version"], col["engine"])
+            # Escape tildes to prevent Markdown strikethrough
+            version = version.replace("~", "\\~")
             row += f" {version} |"
         rows.append(row)
     

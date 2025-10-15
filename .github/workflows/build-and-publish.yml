@@ -63,6 +63,27 @@ jobs:
           platforms: ${{ matrix.platforms }}
           tags: ${{ matrix.combined_tags }}
   
+  update-dockerhub-overview:
+    name: Update Docker Hub Overview
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: pip install requests
+      
+      - name: Update Docker Hub overview
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: python3 scripts/update_dockerhub_overview.py
+
   create-release:
     name: Create GitHub Release
     needs: build

@@ -13,9 +13,9 @@ Miget MicroVMs are lightweight virtual machines tailored for container execution
 | Component | Ubuntu 22.04<br/>dockerd | Ubuntu 22.04<br/>podman | Ubuntu 24.04<br/>dockerd | Ubuntu 24.04<br/>podman | Alpine 3.19<br/>dockerd | Alpine 3.19<br/>podman | Alpine 3.20<br/>dockerd | Alpine 3.20<br/>podman | Alpine 3.21<br/>dockerd | Alpine 3.21<br/>podman | Alpine 3.22<br/>dockerd | Alpine 3.22<br/>podman |
 |-----------|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | **Docker Compose** | v2.40.0 | v2.40.0 | v2.40.0 | v2.40.0 | v2.40.0 | v2.40.0 | v2.40.0 | v2.40.0 | v2.40.0 | v2.40.0 | v2.40.0 | v2.40.0 |
-| **Docker CE** | 5:28.5.1-1~ubuntu.22.04~jammy | - | 5:28.5.1-1~ubuntu.24.04~noble | - | 25.0.5-r1 | - | 26.1.5-r0 | - | 27.3.1-r5 | - | 28.3.3-r3 | - |
+| **Docker CE** | 5:28.5.1-1\~ubuntu.22.04\~jammy | - | 5:28.5.1-1\~ubuntu.24.04\~noble | - | 25.0.5-r1 | - | 26.1.5-r0 | - | 27.3.1-r5 | - | 28.3.3-r3 | - |
 | **Podman** | - | 3.4.4+ds1-1ubuntu1.22.04.3 | - | 4.9.3+ds1-1ubuntu0.2 | - | 4.8.3-r3 | - | 5.2.5-r0 | - | 5.3.2-r5 | - | 5.6.1-r2 |
-| **Containerd** | 1.7.28-1~ubuntu.22.04~jammy | - | 1.7.28-1~ubuntu.24.04~noble | - | - | - | - | - | - | - | - | - |
+| **Containerd** | 1.7.28-1\~ubuntu.22.04\~jammy | - | 1.7.28-1\~ubuntu.24.04\~noble | - | - | - | - | - | - | - | - | - |
 | **OpenSSH** | 1:8.9p1-3ubuntu0.13 | 1:8.9p1-3ubuntu0.13 | 1:9.6p1-3ubuntu13.14 | 1:9.6p1-3ubuntu13.14 | 9.6_p1-r2 | 9.6_p1-r2 | 9.7_p1-r5 | 9.7_p1-r5 | 9.9_p2-r0 | 9.9_p2-r0 | 10.0_p1-r9 | 10.0_p1-r9 |
 | **Supervisor** | 4.2.1-1ubuntu1 | 4.2.1-1ubuntu1 | 4.2.5-1ubuntu0.1 | 4.2.5-1ubuntu0.1 | 4.2.5-r4 | 4.2.5-r4 | 4.2.5-r5 | 4.2.5-r5 | 4.2.5-r5 | 4.2.5-r5 | 4.2.5-r5 | 4.2.5-r5 |
 

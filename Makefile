@@ -1,7 +1,7 @@
 # Copyright 2025 Miget (https://miget.com)
 # Licensed under the Apache License, Version 2.0
 
-.PHONY: help build verify update-versions update-readme update-all clean
+.PHONY: help build verify update-versions update-readme update-all clean update-dockerhub
 
 help:
 	@echo "Miget Container OS - Local Development Commands"
@@ -11,6 +11,7 @@ help:
 	@echo "  make update-versions   - Fetch latest package versions from upstream"
 	@echo "  make update-readme     - Update README component versions table"
 	@echo "  make render            - Render Dockerfiles from templates"
+	@echo "  make update-dockerhub  - Update Docker Hub overview from README.md"
 	@echo "  make clean             - Remove test images"
 	@echo ""
 
@@ -31,6 +32,11 @@ update-readme:
 
 render:
 	@python3 scripts/render_dockerfiles.py
+
+update-dockerhub:
+	@echo "Updating Docker Hub overview..."
+	@python3 scripts/update_dockerhub_overview.py
+	@echo "✓ Docker Hub overview updated"
 
 clean:
 	@echo "Removing test images..."
