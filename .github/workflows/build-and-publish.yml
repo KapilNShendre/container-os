@@ -1,0 +1,134 @@
+# Copyright 2025 Miget (https://miget.com)
+# Licensed under the Apache License, Version 2.0
+
+name: Build and Publish Images
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  DOCKERHUB_REPO: miget/container-os
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.generate.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate matrix
+        id: generate
+        run: |
+          MATRIX=$(python scripts/build_matrix.py --dockerhub-repo $DOCKERHUB_REPO)
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      matrix: ${{ fromJson(needs.prepare.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push images
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          platforms: ${{ matrix.platforms }}
+          tags: ${{ matrix.combined_tags }}
+  
+  create-release:
+    name: Create GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Get version
+        id: version
+        run: |
+          VERSION=$(python -c "import json; print(json.load(open('manifests/targets.json'))['version'])")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+      
+      - name: Check if release exists
+        id: check_release
+        run: |
+          if gh release view "v${{ steps.version.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Release v${{ steps.version.outputs.version }} already exists"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Release v${{ steps.version.outputs.version }} does not exist"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+      
+      - name: Extract changelog for this version
+        if: steps.check_release.outputs.exists == 'false'
+        id: changelog
+        run: |
+          # Extract the latest changelog entry
+          if [ -f CHANGELOG.md ]; then
+            # Get content between first two version headers
+            NOTES=$(awk '/^## \[/{if(++count==2)exit;if(count==1)next}count==1' CHANGELOG.md || echo "See CHANGELOG.md for details")
+            echo "notes<<EOF" >> $GITHUB_OUTPUT
+            echo "$NOTES" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "notes=Release v${{ steps.version.outputs.version }}" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Create GitHub Release
+        if: steps.check_release.outputs.exists == 'false'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          release_name: Release v${{ steps.version.outputs.version }}
+          body: |
+            ## Container OS v${{ steps.version.outputs.version }}
+            
+            ${{ steps.changelog.outputs.notes }}
+            
+            ### Docker Images
+            
+            All images are available on Docker Hub: `miget/container-os`
+            
+            See [README.md](https://github.com/${{ github.repository }}/blob/main/README.md) for available tags and component versions.
+          draft: false
+          prerelease: false

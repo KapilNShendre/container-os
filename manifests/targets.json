@@ -1,0 +1,237 @@
+{
+  "version": "1.0.0",
+  "docker_compose_version": "v2.40.0",
+  "targets": {
+    "ubuntu": {
+      "22.04": {
+        "base": "22.04",
+        "alias_patch": "22.04",
+        "packages": {
+          "common": [
+            "curl",
+            "supervisor",
+            "iptables",
+            "fuse-overlayfs",
+            "fuse3",
+            "openssh-server",
+            "cron",
+            "sudo"
+          ],
+          "dockerd": [
+            "docker-ce",
+            "docker-ce-cli",
+            "containerd.io",
+            "docker-buildx-plugin",
+            "docker-compose-plugin"
+          ],
+          "podman": [
+            "podman",
+            "podman-docker",
+            "uidmap",
+            "slirp4netns"
+          ]
+        }
+      },
+      "24.04": {
+        "base": "24.04",
+        "alias_patch": "24.04",
+        "packages": {
+          "common": [
+            "curl",
+            "supervisor",
+            "iptables",
+            "fuse-overlayfs",
+            "fuse3",
+            "openssh-server",
+            "cron",
+            "sudo"
+          ],
+          "dockerd": [
+            "docker-ce",
+            "docker-ce-cli",
+            "containerd.io",
+            "docker-buildx-plugin",
+            "docker-compose-plugin"
+          ],
+          "podman": [
+            "ca-certificates",
+            "gnupg",
+            "lsb-release",
+            "podman",
+            "podman-docker",
+            "uidmap",
+            "slirp4netns"
+          ]
+        }
+      }
+    },
+    "alpine": {
+      "3.19": {
+        "base": "3.19",
+        "alias_patch": "3.19.4",
+        "packages": {
+          "common": [
+            "bash",
+            "supervisor",
+            "openssh",
+            "dcron",
+            "iptables-legacy",
+            "fuse-overlayfs",
+            "fuse3",
+            "sudo"
+          ],
+          "dockerd": [
+            "docker",
+            "docker-cli-compose"
+          ],
+          "podman": [
+            "podman",
+            "podman-docker",
+            "slirp4netns",
+            "shadow-subids"
+          ]
+        }
+      },
+      "3.20": {
+        "base": "3.20",
+        "alias_patch": "3.20.3",
+        "packages": {
+          "common": [
+            "bash",
+            "supervisor",
+            "openssh",
+            "dcron",
+            "iptables-legacy",
+            "fuse-overlayfs",
+            "fuse3",
+            "sudo"
+          ],
+          "dockerd": [
+            "docker",
+            "docker-cli-compose"
+          ],
+          "podman": [
+            "podman",
+            "podman-docker",
+            "slirp4netns",
+            "shadow-subids"
+          ]
+        }
+      },
+      "3.21": {
+        "base": "3.21",
+        "alias_patch": "3.21.1",
+        "packages": {
+          "common": [
+            "bash",
+            "supervisor",
+            "openssh",
+            "dcron",
+            "iptables-legacy",
+            "fuse-overlayfs",
+            "fuse3",
+            "sudo"
+          ],
+          "dockerd": [
+            "docker",
+            "docker-cli-compose"
+          ],
+          "podman": [
+            "podman",
+            "podman-docker",
+            "slirp4netns",
+            "shadow-subids"
+          ]
+        }
+      },
+      "3.22": {
+        "base": "3.22",
+        "alias_patch": "3.22.0",
+        "packages": {
+          "common": [
+            "bash",
+            "supervisor",
+            "openssh",
+            "dcron",
+            "iptables-legacy",
+            "fuse-overlayfs",
+            "fuse3",
+            "sudo"
+          ],
+          "dockerd": [
+            "docker",
+            "docker-cli-compose"
+          ],
+          "podman": [
+            "podman",
+            "podman-docker",
+            "slirp4netns",
+            "shadow-subids"
+          ]
+        }
+      }
+    }
+  },
+  "channels": {
+    "stable-ubuntu22-dockerd": {
+      "os": "ubuntu",
+      "version": "22.04",
+      "engine": "dockerd"
+    },
+    "stable-ubuntu22-podman": {
+      "os": "ubuntu",
+      "version": "22.04",
+      "engine": "podman"
+    },
+    "stable-ubuntu24-dockerd": {
+      "os": "ubuntu",
+      "version": "24.04",
+      "engine": "dockerd"
+    },
+    "stable-ubuntu24-podman": {
+      "os": "ubuntu",
+      "version": "24.04",
+      "engine": "podman"
+    },
+    "stable-alpine3.19-dockerd": {
+      "os": "alpine",
+      "version": "3.19",
+      "engine": "dockerd"
+    },
+    "stable-alpine3.19-podman": {
+      "os": "alpine",
+      "version": "3.19",
+      "engine": "podman"
+    },
+    "stable-alpine3.20-dockerd": {
+      "os": "alpine",
+      "version": "3.20",
+      "engine": "dockerd"
+    },
+    "stable-alpine3.20-podman": {
+      "os": "alpine",
+      "version": "3.20",
+      "engine": "podman"
+    },
+    "stable-alpine3.21-dockerd": {
+      "os": "alpine",
+      "version": "3.21",
+      "engine": "dockerd"
+    },
+    "stable-alpine3.21-podman": {
+      "os": "alpine",
+      "version": "3.21",
+      "engine": "podman"
+    },
+    "stable-alpine3.22-dockerd": {
+      "os": "alpine",
+      "version": "3.22",
+      "engine": "dockerd"
+    },
+    "stable-alpine3.22-podman": {
+      "os": "alpine",
+      "version": "3.22",
+      "engine": "podman"
+    }
+  }
+}
