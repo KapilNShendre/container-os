@@ -44,6 +44,7 @@ class UpdateResult:
     manifest_version_bumped: bool
 
 class UpdateError(Exception):
+    pass
 
 def load_json(path: Path) -> Dict:
     if not path.exists():
