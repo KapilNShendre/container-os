@@ -24,7 +24,7 @@ jobs:
           python-version: '3.12'
       
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests packaging
       
       - name: Fetch latest docker-compose version
         run: python scripts/update_docker_compose_version.py
